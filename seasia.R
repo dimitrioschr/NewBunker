@@ -1,13 +1,13 @@
-# Japan
+# SEAsia
 
-majors = c(4074, 1803, 1766, 1618, 4464, 571, 4185)
+majors = c(1533, 1803, 1766, 2890, 3039, 3720)
 
-pdf('japan.pdf', width = 7, height = 10)
+pdf('seasia.pdf', width = 7, height = 10)
 map = getMap(resolution = 'high')
-long.left.limit = 120
-long.right.limit = 155
-lat.bottom.limit = 25
-lat.top.limit = 40
+long.left.limit = 90
+long.right.limit = 135
+lat.bottom.limit = -15
+lat.top.limit = 30
 
 plot(map, 
      xlim = c(long.left.limit, long.right.limit), 
@@ -30,7 +30,9 @@ points(port.coordinates[major.port.indices, ],
 
 text(port.coordinates[major.port.indices, ][1, 1], 
      port.coordinates[major.port.indices, ][1, 2], 
-     labels = paste0(ports[major.port.indices[1]], 
+     labels = paste0('\n ', 
+                     '      ', 
+                     ports[major.port.indices[1]], 
                      ': ', 
                      as.character(round(IFO380[major.port.indices[1]], 1)), 
                      ', ', 
@@ -42,7 +44,7 @@ text(port.coordinates[major.port.indices, ][1, 1],
      ),
      cex = 1, 
      col = 'white', 
-     pos = 3)
+     pos = 1)
 
 text(port.coordinates[major.port.indices, ][2, 1], 
      port.coordinates[major.port.indices, ][2, 2], 
@@ -55,7 +57,7 @@ text(port.coordinates[major.port.indices, ][2, 1],
                      as.character(round(MDO[major.port.indices[2]], 1)), 
                      ', ', 
                      as.character(round(MGO[major.port.indices[2]], 1))
-     ),
+                     ),
      cex = 1, 
      col = 'white', 
      pos = 4)
@@ -71,16 +73,15 @@ text(port.coordinates[major.port.indices, ][3, 1],
                      as.character(round(MDO[major.port.indices[3]], 1)), 
                      ', ', 
                      as.character(round(MGO[major.port.indices[3]], 1)), 
-                     '\n '
-                     ),
+                     '                                                        '
+     ),
      cex = 1, 
      col = 'white', 
      pos = 3)
 
 text(port.coordinates[major.port.indices, ][4, 1], 
      port.coordinates[major.port.indices, ][4, 2], 
-     labels = paste0('                                    ', 
-                     ports[major.port.indices[4]], 
+     labels = paste0(ports[major.port.indices[4]], 
                      ': ', 
                      as.character(round(IFO380[major.port.indices[4]], 1)), 
                      ', ', 
@@ -92,12 +93,11 @@ text(port.coordinates[major.port.indices, ][4, 1],
      ),
      cex = 1, 
      col = 'white', 
-     pos = 1)
+     pos = 4)
 
 text(port.coordinates[major.port.indices, ][5, 1], 
      port.coordinates[major.port.indices, ][5, 2], 
-     labels = paste0('                                    ', 
-                     ports[major.port.indices[5]], 
+     labels = paste0(ports[major.port.indices[5]], 
                      ': ', 
                      as.character(round(IFO380[major.port.indices[5]], 1)), 
                      ', ', 
@@ -105,16 +105,16 @@ text(port.coordinates[major.port.indices, ][5, 1],
                      ', ', 
                      as.character(round(MDO[major.port.indices[5]], 1)), 
                      ', ', 
-                     as.character(round(MGO[major.port.indices[5]], 1)), 
-                     '\n '
-                     ),
+                     as.character(round(MGO[major.port.indices[5]], 1))
+     ),
      cex = 1, 
      col = 'white', 
-     pos = 3)
+     pos = 4)
 
 text(port.coordinates[major.port.indices, ][6, 1], 
      port.coordinates[major.port.indices, ][6, 2], 
-     labels = paste0(ports[major.port.indices[6]], 
+     labels = paste0('      ', 
+                     ports[major.port.indices[6]], 
                      ': ', 
                      as.character(round(IFO380[major.port.indices[6]], 1)), 
                      ', ', 
@@ -122,27 +122,12 @@ text(port.coordinates[major.port.indices, ][6, 1],
                      ', ', 
                      as.character(round(MDO[major.port.indices[6]], 1)), 
                      ', ', 
-                     as.character(round(MGO[major.port.indices[6]], 1))
+                     as.character(round(MGO[major.port.indices[6]], 1)), 
+                     '\n '
      ),
      cex = 1, 
      col = 'white', 
-     pos = 1)
-
-text(port.coordinates[major.port.indices, ][7, 1], 
-     port.coordinates[major.port.indices, ][7, 2], 
-     labels = paste0(ports[major.port.indices[7]], 
-                     ': ', 
-                     as.character(round(IFO380[major.port.indices[7]], 1)), 
-                     ', ', 
-                     as.character(round(IFO180[major.port.indices[7]], 1)), 
-                     ', ', 
-                     as.character(round(MDO[major.port.indices[7]], 1)), 
-                     ', ', 
-                     as.character(round(MGO[major.port.indices[7]], 1))
-     ),
-     cex = 1, 
-     col = 'white', 
-     pos = 4)
+     pos = 3)
 
 
 dev.off()

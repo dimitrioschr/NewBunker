@@ -1,13 +1,13 @@
-# Japan
+# US Gulf
 
-majors = c(4074, 1803, 1766, 1618, 4464, 571, 4185)
+majors = c(2467, 2636, 3805, 271, 867)
 
-pdf('japan.pdf', width = 7, height = 10)
+pdf('usgulf.pdf', width = 10, height = 7)
 map = getMap(resolution = 'high')
-long.left.limit = 120
-long.right.limit = 155
-lat.bottom.limit = 25
-lat.top.limit = 40
+long.left.limit = -105
+long.right.limit = -60
+lat.bottom.limit = 20
+lat.top.limit = 20
 
 plot(map, 
      xlim = c(long.left.limit, long.right.limit), 
@@ -42,7 +42,7 @@ text(port.coordinates[major.port.indices, ][1, 1],
      ),
      cex = 1, 
      col = 'white', 
-     pos = 3)
+     pos = 1)
 
 text(port.coordinates[major.port.indices, ][2, 1], 
      port.coordinates[major.port.indices, ][2, 2], 
@@ -58,7 +58,7 @@ text(port.coordinates[major.port.indices, ][2, 1],
      ),
      cex = 1, 
      col = 'white', 
-     pos = 4)
+     pos = 3)
 
 text(port.coordinates[major.port.indices, ][3, 1], 
      port.coordinates[major.port.indices, ][3, 2], 
@@ -71,16 +71,15 @@ text(port.coordinates[major.port.indices, ][3, 1],
                      as.character(round(MDO[major.port.indices[3]], 1)), 
                      ', ', 
                      as.character(round(MGO[major.port.indices[3]], 1)), 
-                     '\n '
-                     ),
+                     '                                    '
+     ),
      cex = 1, 
      col = 'white', 
-     pos = 3)
+     pos = 1)
 
 text(port.coordinates[major.port.indices, ][4, 1], 
      port.coordinates[major.port.indices, ][4, 2], 
-     labels = paste0('                                    ', 
-                     ports[major.port.indices[4]], 
+     labels = paste0(ports[major.port.indices[4]], 
                      ': ', 
                      as.character(round(IFO380[major.port.indices[4]], 1)), 
                      ', ', 
@@ -96,8 +95,7 @@ text(port.coordinates[major.port.indices, ][4, 1],
 
 text(port.coordinates[major.port.indices, ][5, 1], 
      port.coordinates[major.port.indices, ][5, 2], 
-     labels = paste0('                                    ', 
-                     ports[major.port.indices[5]], 
+     labels = paste0(ports[major.port.indices[5]], 
                      ': ', 
                      as.character(round(IFO380[major.port.indices[5]], 1)), 
                      ', ', 
@@ -105,44 +103,11 @@ text(port.coordinates[major.port.indices, ][5, 1],
                      ', ', 
                      as.character(round(MDO[major.port.indices[5]], 1)), 
                      ', ', 
-                     as.character(round(MGO[major.port.indices[5]], 1)), 
-                     '\n '
-                     ),
+                     as.character(round(MGO[major.port.indices[5]], 1))
+     ),
      cex = 1, 
      col = 'white', 
      pos = 3)
-
-text(port.coordinates[major.port.indices, ][6, 1], 
-     port.coordinates[major.port.indices, ][6, 2], 
-     labels = paste0(ports[major.port.indices[6]], 
-                     ': ', 
-                     as.character(round(IFO380[major.port.indices[6]], 1)), 
-                     ', ', 
-                     as.character(round(IFO180[major.port.indices[6]], 1)), 
-                     ', ', 
-                     as.character(round(MDO[major.port.indices[6]], 1)), 
-                     ', ', 
-                     as.character(round(MGO[major.port.indices[6]], 1))
-     ),
-     cex = 1, 
-     col = 'white', 
-     pos = 1)
-
-text(port.coordinates[major.port.indices, ][7, 1], 
-     port.coordinates[major.port.indices, ][7, 2], 
-     labels = paste0(ports[major.port.indices[7]], 
-                     ': ', 
-                     as.character(round(IFO380[major.port.indices[7]], 1)), 
-                     ', ', 
-                     as.character(round(IFO180[major.port.indices[7]], 1)), 
-                     ', ', 
-                     as.character(round(MDO[major.port.indices[7]], 1)), 
-                     ', ', 
-                     as.character(round(MGO[major.port.indices[7]], 1))
-     ),
-     cex = 1, 
-     col = 'white', 
-     pos = 4)
 
 
 dev.off()

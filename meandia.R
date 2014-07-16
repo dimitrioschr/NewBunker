@@ -1,18 +1,18 @@
-# US Atlantic
+# MidEast, India, Piracy
 
-majors = c(1416, 2919, 2680)
+majors = c(1685, 1220, 810)
 
-pdf('usatlantic.pdf', width = 7, height = 10)
+pdf('meandia.pdf', width = 10, height = 7)
 map = getMap(resolution = 'high')
-long.left.limit = -105
-long.right.limit = -60
-lat.bottom.limit = 30
-lat.top.limit = 60
+long.left.limit = 30
+long.right.limit = 100
+lat.bottom.limit = -10
+lat.top.limit = 30
 
 plot(map, 
      xlim = c(long.left.limit, long.right.limit), 
      ylim = c(lat.bottom.limit, lat.top.limit), 
-     asp = 1.5, 
+     asp = 1, 
      bg = 'lightblue', 
      col = 'steelblue')
 
@@ -59,7 +59,7 @@ text(port.coordinates[major.port.indices, ][2, 1],
      ),
      cex = 1, 
      col = 'white', 
-     pos = 3)
+     pos = 1)
 
 text(port.coordinates[major.port.indices, ][3, 1], 
      port.coordinates[major.port.indices, ][3, 2], 
@@ -75,7 +75,7 @@ text(port.coordinates[major.port.indices, ][3, 1],
      ),
      cex = 1, 
      col = 'white', 
-     pos = 3)
+     pos = 1)
 
 
 dev.off()
