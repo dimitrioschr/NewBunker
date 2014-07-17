@@ -114,7 +114,17 @@ library(maps)
 library(plotrix)
 
 
-
+source('~/NewBunker/northeurope.R')
+source('~/NewBunker/mediterranean.R')
+source('~/NewBunker/africa.R')
+source('~/NewBunker/meandia.R')
+source('~/NewBunker/seasia.R')
+source('~/NewBunker/japan.R')
+source('~/NewBunker/latam.R')
+source('~/NewBunker/uspac.R')
+source('~/NewBunker/usgulf.R')
+source('~/NewBunker/usatlantic.R')
+source('~/NewBunker/aussie.R')
 
 
 
