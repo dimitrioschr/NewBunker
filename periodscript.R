@@ -1,5 +1,7 @@
 source('~/NewBunker/get.period.table.R')
 source('~/NewBunker/get.spot.table.R')
+source('~/NewBunker/get.fleet.table.R')
+
 
 period.2014 = get.period.table('C:\\Users\\operation2\\Desktop\\2014period.csv')
 period.2013 = get.period.table('C:\\Users\\operation2\\Desktop\\2013period.csv')
@@ -64,7 +66,11 @@ hist(period.2014$built[period.2014$duration.min >= 12],
      add = TRUE, col = 'darkblue', density = 20, breaks = 1980:2015)
 
 
+# but the fleet is young-heavy
+# because it is expanding
 
+ft = get.fleet.table('C:\\Users\\operation2\\Desktop\\2014fleet.csv')
+hist(ft$built)
 
 
 
@@ -80,17 +86,33 @@ plot(fix.data.frame$built, fix.data.frame$duration.min)
 points(fix.data.frame$built, fix.data.frame$duration.max, col = 'red')
 
 
-par(mfrow = c(2,3))
+
+
+par(mfrow = c(3,4))
+
+fix.data.frame = period.2014
 
 for (month in month.abb) {
   month.index = which(months(fix.data.frame$date, abbreviate = TRUE) == month)
   if (length(month.index) != 0) {
-    plot(fix.data.frame$built[month.index], fix.data.frame$rate[month.index], main = month)
     lin = lm(fix.data.frame$rate[month.index] ~ fix.data.frame$built[month.index])
+    plot(fix.data.frame$built[month.index], 
+         fix.data.frame$rate[month.index], 
+         xlab = 'built', ylab = 'rate', 
+         main = paste0(month, 
+                       ' ', 
+                       '2014', 
+                       ', ', 
+                       'b = ', 
+                       as.character(round(coefficients(lin)[2], 0)
+                                    )
+                       )
+    )
     abline(lin, col = 'red', lwd = 5)
-    print(month)
-    print(coefficients(lin))
     
-    hist(fix.data.frame$built[month.index], breaks = 1990:2015, main = month)
+#     hist(fix.data.frame$built[month.index], 
+#          breaks = 1980:2015, 
+#          main = paste0(month, ' ', '2014'))
   }
 }
+

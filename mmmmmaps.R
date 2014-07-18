@@ -7,6 +7,12 @@ load('port_directory.table')
 # shipandbunker.lookup = create.shipandbunker.lookup()
 load('lookup')
 
+source('~/NewBunker/get.bunkerindex.prices.R')
+source('~/NewBunker/get.bunkerportsnews.prices.from.table.R')
+source('~/NewBunker/get.marine.news.prices.R')
+source('~/NewBunker/get.navigatemag.prices.R')
+source('~/NewBunker/get.shipandbunker.prices.fast.R')
+
 bunkerindex.prices = get.bunkerindex.prices()
 bunkerportsnews.prices = get.bunkerportsnews.prices.from.table()
 marine.news.prices = get.marine.news.prices()
