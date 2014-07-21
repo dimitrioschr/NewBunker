@@ -11,6 +11,10 @@ get.spot.table = function(filename) {
   fix.rate = as.numeric(as.character(fix.table$X.12))
   fix.duration = as.character(fix.table$X.14)
   
+  fix.del = toupper(as.character(fix.table$X.6))
+  
+  fix.load = toupper(as.character(fix.table$X.7))
+  
   fix.redel = toupper(as.character(fix.table$X.8))
   fix.redel = str_replace_all(fix.redel, ' - ', '-')
   fix.redel = str_replace_all(fix.redel, ' -', '-')
@@ -63,6 +67,8 @@ get.spot.table = function(filename) {
   fix.data.frame = data.frame(date = fix.date, 
                               built = fix.built, 
                               dwt = fix.dwt, 
+                              del = fix.del, 
+                              load = fix.load, 
                               rate = fix.rate, 
                               duration.min = fix.duration.min * fix.factor, 
                               duration.max = fix.duration.max * fix.factor, 
@@ -71,7 +77,7 @@ get.spot.table = function(filename) {
   
   
   # for spot tables #
-  fix.data.frame = fix.data.frame[which(fix.data.frame$rate > 100), -(5:6)]
+  fix.data.frame = fix.data.frame[which(fix.data.frame$rate > 100), -(7:8)]
   
   
   fix.data.frame = na.omit(fix.data.frame)

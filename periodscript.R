@@ -3,15 +3,15 @@ source('~/NewBunker/get.spot.table.R')
 source('~/NewBunker/get.fleet.table.R')
 
 
-period.2014 = get.period.table('C:\\Users\\operation2\\Desktop\\2014period.csv')
-period.2013 = get.period.table('C:\\Users\\operation2\\Desktop\\2013period.csv')
-period.2012 = get.period.table('C:\\Users\\operation2\\Desktop\\2012period.csv')
-period.2011 = get.period.table('C:\\Users\\operation2\\Desktop\\2011period.csv')
+period.2014 = get.period.table('~/NewBunker/2014period.csv')
+period.2013 = get.period.table('~/NewBunker/2013period.csv')
+period.2012 = get.period.table('~/NewBunker/2012period.csv')
+period.2011 = get.period.table('~/NewBunker/2011period.csv')
 
-spot.2014 = get.spot.table('C:\\Users\\operation2\\Desktop\\2014spot.csv')
-spot.2013 = get.spot.table('C:\\Users\\operation2\\Desktop\\2013spot.csv')
-spot.2012 = get.spot.table('C:\\Users\\operation2\\Desktop\\2012spot.csv')
-spot.2011 = get.spot.table('C:\\Users\\operation2\\Desktop\\2011spot.csv')
+spot.2014 = get.spot.table('~/NewBunker/2014spot.csv')
+spot.2013 = get.spot.table('~/NewBunker/2013spot.csv')
+spot.2012 = get.spot.table('~/NewBunker/2012spot.csv')
+spot.2011 = get.spot.table('~/NewBunker/2011spot.csv')
 
 # prices along the timeline: prices have dropped and stabilised
 hist(period.2011$rate, xlim = c(0, 30000), ylim = c(0, 175), density = 30, col = 'lightgrey')
@@ -31,7 +31,7 @@ hist(spot.2012$built, breaks = 1980:2015, density = 10, col = 'lightblue', add =
 hist(spot.2013$built, breaks = 1960:2015, density = 20, col = 'steelblue', add = TRUE)
 hist(spot.2014$built, breaks = 1980:2015, density = 30, add = TRUE)
 
-# period market: duration vs. built
+# period market: duration vs. year
 hist(period.2011$duration.min, breaks = 0:40, freq = FALSE, ylim = c(0, 0.35), density = 1)
 hist(period.2012$duration.min, breaks = 0:40, freq = FALSE, add = TRUE, col = 'lightgrey', density = 10)
 hist(period.2013$duration.min, breaks = 0:40, freq = FALSE, add = TRUE, col = 'lightblue', density = 20)
@@ -69,7 +69,7 @@ hist(period.2014$built[period.2014$duration.min >= 12],
 # but the fleet is young-heavy
 # because it is expanding
 
-ft = get.fleet.table('C:\\Users\\operation2\\Desktop\\2014fleet.csv')
+ft = get.fleet.table('~/NewBunker/2014fleet.csv')
 hist(ft$built)
 
 
@@ -90,7 +90,7 @@ points(fix.data.frame$built, fix.data.frame$duration.max, col = 'red')
 
 par(mfrow = c(3,4))
 
-fix.data.frame = period.2014
+fix.data.frame = period.2013
 
 for (month in month.abb) {
   month.index = which(months(fix.data.frame$date, abbreviate = TRUE) == month)
@@ -101,7 +101,7 @@ for (month in month.abb) {
          xlab = 'built', ylab = 'rate', 
          main = paste0(month, 
                        ' ', 
-                       '2014', 
+                       '2013', 
                        ', ', 
                        'b = ', 
                        as.character(round(coefficients(lin)[2], 0)
@@ -115,4 +115,25 @@ for (month in month.abb) {
 #          main = paste0(month, ' ', '2014'))
   }
 }
+
+
+
+
+
+
+
+redel = c(spot.2011$redel, spot.2012$redel, spot.2013$redel, spot.2014$redel)
+redel.table = table(redel)
+names(redel.table)
+redel.table
+order(redel.table)
+redel.table[order(redel.table)]
+redel.table = table(redel)[order(table(redel))]
+
+del = c(spot.2011$del, spot.2012$del, spot.2013$del, spot.2014$del)
+del.table = table(del)[order(table(del))]
+load = c(spot.2011$load, spot.2012$load, spot.2013$load, spot.2014$load)
+load.table = table(load)[order(table(load))]
+
+
 
